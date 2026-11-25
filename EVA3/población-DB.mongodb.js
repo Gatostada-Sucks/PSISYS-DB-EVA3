@@ -1,10 +1,3 @@
-// ============================================================
-//  PROYECTO AQUASELECCION - Base de datos NoSQL (MongoDB)
-//  Coleccion: candidatos
-//  Si la coleccion ya esta poblada, NO vuelvas a ejecutar el
-//  insertMany; parte desde la seccion READ para no duplicar.
-// ============================================================
-
 use('aquachile');
 
 db.candidatos.insertMany([
@@ -17,14 +10,14 @@ db.candidatos.insertMany([
         tipo_licencia: ["Clase B"],
         habilidades: ["Manejo de vehiculos", "Conocimiento en mecanica", "Experiencia en rutas"],
         experiencia_laboral: [
-            { cargo: "Chofer", empresa: "Prosiga S.A", anios: 5 },
-            { cargo: "Auxiliar de aseo", empresa: "Manpower", anios: 3 }
+            { cargo: "Chofer", empresa: "Prosiga S.A", años: 5 },
+            { cargo: "Auxiliar de aseo", empresa: "Manpower", años: 3 }
         ],
         postulacion: {
             cargo: "Chofer",
             fecha_postulacion: new Date("2026-10-10"),
             evaluacion: {
-                evaluador: "Carla Mendez",
+                evaluador: "Carlos Manzana",
                 fecha: new Date("2026-10-13"),
                 puntaje: 65,
                 observacion: "Buena experiencia en rutas, licencia vigente."
@@ -40,9 +33,9 @@ db.candidatos.insertMany([
         licencia_activa: true,
         habilidades: ["Operacion de maquinaria", "Control de calidad", "Trabajo en equipo"],
         experiencia_laboral: [
-            { cargo: "Operaria de produccion", empresa: "ADECCO", anios: 2 },
-            { cargo: "Operaria de produccion", empresa: "Manpower", anios: 3 },
-            { cargo: "Operaria de produccion", empresa: "Randstad", anios: 1 }
+            { cargo: "Operaria de produccion", empresa: "ADECCO", años: 2 },
+            { cargo: "Operaria de produccion", empresa: "Manpower", años: 3 },
+            { cargo: "Operaria de produccion", empresa: "Randstad", años: 1 }
         ],
         postulacion: {
             cargo: "Operaria de produccion",
@@ -63,7 +56,7 @@ db.candidatos.insertMany([
         tipo_licencia: ["Clase B", "Clase D"],
         habilidades: ["Manejo de vehiculos", "Conocimiento de rutas", "Trabajo en equipo"],
         experiencia_laboral: [
-            { cargo: "Chofer", empresa: "Transportes S.A", anios: 5 }
+            { cargo: "Chofer", empresa: "Transportes S.A", años: 5 }
         ],
         postulacion: {
             cargo: "Chofer",
@@ -84,8 +77,8 @@ db.candidatos.insertMany([
         habilidades: ["Python", "SQL", "Analisis de datos", "Excel"],
         certificaciones: ["Analisis de datos", "Python", "SQL"],
         experiencia_laboral: [
-            { cargo: "Analista de datos", empresa: "Microsoft", anios: 2 },
-            { cargo: "Analista de datos", empresa: "Google", anios: 3 }
+            { cargo: "Analista de datos", empresa: "Microsoft", años: 2 },
+            { cargo: "Analista de datos", empresa: "Google", años: 3 }
         ],
         postulacion: {
             cargo: "Analista de datos",
@@ -106,7 +99,7 @@ db.candidatos.insertMany([
         habilidades: ["Programacion en Python", "Diseno de arquitectura", "Gestion de proyectos"],
         certificaciones: ["Desarrollo de software", "Gestion de proyectos"],
         experiencia_laboral: [
-            { cargo: "Ingeniero de software", empresa: "Tech Solutions", anios: 4 }
+            { cargo: "Ingeniero de software", empresa: "Tech Solutions", años: 4 }
         ],
         postulacion: {
             cargo: "Ingeniero de software",
@@ -127,7 +120,7 @@ db.candidatos.insertMany([
         habilidades: ["Diseno grafico", "Ilustracion", "Maquetacion"],
         portafolio: ["www.portafolio-carla.com", "www.behance.net/carla-rojas"],
         experiencia_laboral: [
-            { cargo: "Disenadora grafica", empresa: "Creative Studio", anios: 3 }
+            { cargo: "Disenadora grafica", empresa: "Creative Studio", años: 3 }
         ],
         postulacion: {
             cargo: "Disenadora grafica",
@@ -149,7 +142,7 @@ db.candidatos.insertMany([
         licencia_activa: true,
         habilidades: ["Manejo de vehiculos", "Conocimiento de rutas", "Trabajo en equipo"],
         experiencia_laboral: [
-            { cargo: "Chofer", empresa: "Transportes S.A", anios: 5 }
+            { cargo: "Chofer", empresa: "Transportes S.A", años: 5 }
         ],
         postulacion: {
             cargo: "Chofer",
@@ -170,7 +163,7 @@ db.candidatos.insertMany([
         licencia_activa: false,
         habilidades: ["Operacion de maquinaria", "Control de calidad", "Trabajo en equipo"],
         experiencia_laboral: [
-            { cargo: "Operaria de produccion", empresa: "Adecco", anios: 2 }
+            { cargo: "Operaria de produccion", empresa: "Adecco", años: 2 }
         ],
         postulacion: {
             cargo: "Operaria de produccion",
@@ -191,7 +184,7 @@ db.candidatos.insertMany([
         licencia_activa: false,
         habilidades: ["Operacion de maquinaria", "Control de calidad", "Trabajo en equipo"],
         experiencia_laboral: [
-            { cargo: "Operario de produccion", empresa: "Adecco", anios: 2 }
+            { cargo: "Operario de produccion", empresa: "Adecco", años: 2 }
         ],
         postulacion: {
             cargo: "Operario de produccion",
@@ -212,7 +205,7 @@ db.candidatos.insertMany([
         licencia_activa: true,
         habilidades: ["Operacion de maquinaria", "Control de calidad", "Trabajo en equipo"],
         experiencia_laboral: [
-            { cargo: "Operario de produccion", empresa: "Adecco", anios: 2 }
+            { cargo: "Operario de produccion", empresa: "Adecco", años: 2 }
         ],
         postulacion: {
             cargo: "Operario de produccion",
@@ -232,7 +225,12 @@ db.candidatos.insertMany([
 //  SECCION READ
 // ============================================================
 
+use('aquachile');
+
 // Ver todos los candidatos cargados.
+
+db.candidatos.deleteMany({}); // Eliminar todos los documentos de la coleccion candidatos
+
 db.candidatos.find();
 
 // Candidatos con puntaje de evaluacion mayor o igual a 70.
@@ -275,7 +273,7 @@ db.candidatos.distinct("postulacion.cargo");
 
 // CREATE: insertar un candidato temporal.
 db.candidatos.insertOne({
-    nombre: "Candidato Temporal",
+    nombre: "Carlitos Lechuga",
     rut: "30.000.000-0",
     edad: 40,
     correo: "temporal@prueba.cl",
